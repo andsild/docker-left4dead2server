@@ -5,8 +5,7 @@ After=network.target
 [Service]
 Type=simple
 User=dev
-ExecStart=/home/dev/left4dead2server/cfg/run.sh
-EnvironmentFile=/home/dev/.mumbleCfg.sh
+ExecStart=/home/dev/docker-left4dead2server/cfg/run.sh
 Restart=on-failure
 
 [Install]
