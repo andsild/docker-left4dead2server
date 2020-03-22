@@ -39,7 +39,5 @@ RUN /usr/games/steamcmd +login anonymous +quit \
 
 COPY --chown=appuser:appuser server.cfg.tpl /home/appuser/server.cfg.tpl
 COPY --chown=appuser:appuser entrypoint.sh /home/appuser/entrypoint.sh
-COPY --chown=appuser:appuser boomer /home/appuser/entrypoint.sh
-
 
 ENTRYPOINT ["/bin/bash", "/home/appuser/entrypoint.sh"]
