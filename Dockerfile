@@ -5,8 +5,6 @@ FROM debian:stretch-slim
 
 ENV SV_HOSTNAME "L4D2 Server"
 ENV SV_RCON_PASSWORD "rconpassword"
-
-
 ENV DEBIAN_FRONTEND noninteractive
 
 EXPOSE 27015
@@ -22,9 +20,9 @@ RUN /bin/bash -c ' \
   && echo "deb-src http://mirrors.linode.com/debian stretch main non-free" >> /etc/apt/sources.list.d/linode.list \
   && apt-get update \
   && apt-get install -y --no-install-recommends \
-    ca-certificates=20161130+nmu1+deb9u1 \
-    gettext=0.19.8.1-2 \
-    steamcmd=0~20130205-1 \
+    ca-certificates \
+    gettext \
+    steamcmd \
   && apt-get clean \
   && rm -rf /var/lib/apt/list/* \
   && groupadd -g 61000 appuser \
@@ -41,6 +39,7 @@ RUN /usr/games/steamcmd +login anonymous +quit \
 
 COPY --chown=appuser:appuser server.cfg.tpl /home/appuser/server.cfg.tpl
 COPY --chown=appuser:appuser entrypoint.sh /home/appuser/entrypoint.sh
+COPY --chown=appuser:appuser boomer /home/appuser/entrypoint.sh
 
 
 ENTRYPOINT ["/bin/bash", "/home/appuser/entrypoint.sh"]

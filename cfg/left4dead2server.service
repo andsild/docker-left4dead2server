@@ -1,0 +1,14 @@
+[Unit]
+Description=left4dead2server
+After=network.target
+
+[Service]
+Type=simple
+User=dev
+ExecStart=/home/dev/left4dead2server/cfg/run.sh
+EnvironmentFile=/home/dev/.mumbleCfg.sh
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+
